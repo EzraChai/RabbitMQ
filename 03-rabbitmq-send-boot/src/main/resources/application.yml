@@ -1,0 +1,9 @@
+
+#配置RabbitMQ连接信息
+spring:
+  rabbitmq:
+    host: 192.168.11.128
+    port: 5672
+    username: chloegan
+    password: chloegan
+

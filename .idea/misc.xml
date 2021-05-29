@@ -5,6 +5,7 @@
       <list>
         <option value="$PROJECT_DIR$/01-rabbitmq-send-java/pom.xml" />
         <option value="$PROJECT_DIR$/02-rabbitmq-receive-java/pom.xml" />
+        <option value="$PROJECT_DIR$/03-rabbitmq-send-boot/pom.xml" />
       </list>
     </option>
   </component>
