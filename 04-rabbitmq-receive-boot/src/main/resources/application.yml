@@ -1,4 +1,3 @@
-
 #配置RabbitMQ连接信息
 spring:
   rabbitmq:
@@ -7,6 +6,3 @@ spring:
     username: chloegan
     password: chloegan
 
-
-product:
-  key: product

@@ -1,9 +1,6 @@
 package com.bjpowernode.springboot.config;
 
-import org.springframework.amqp.core.Binding;
-import org.springframework.amqp.core.BindingBuilder;
-import org.springframework.amqp.core.DirectExchange;
-import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.core.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -42,5 +39,15 @@ public class RabbitMQConfig {
         // 参数 2：需要绑定的交换机，
         // 参数 3：绑定时的RoutingKey
         return BindingBuilder.bind(directQueue).to(directExchange).with("bootDirectRoutingKey");
+    }
+
+    @Bean
+    public FanoutExchange fanoutExchange(){
+        return new FanoutExchange("fanoutBootExchange");
+    }
+
+    @Bean
+    public TopicExchange topicExchange(){
+        return new TopicExchange("topicBootExchange");
     }
 }

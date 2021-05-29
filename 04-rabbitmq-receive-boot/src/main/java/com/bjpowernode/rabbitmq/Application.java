@@ -1,6 +1,6 @@
-package com.bjpowernode.springboot;
+package com.bjpowernode.rabbitmq;
 
-import com.bjpowernode.springboot.service.impl.SendServiceImpl;
+import com.bjpowernode.rabbitmq.service.ReceiveService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -10,13 +10,10 @@ public class Application {
 
     public static void main(String[] args) {
         ConfigurableApplicationContext applicationContext = SpringApplication.run(Application.class, args);
-        SendServiceImpl service = (SendServiceImpl) applicationContext.getBean("sendServiceImpl");
+        ReceiveService receiveServiceImpl = (ReceiveService) applicationContext.getBean("receiveServiceImpl");
+        //使用了消息监听器，那么不需要调用接收方法
+//        receiveServiceImpl.receiveMessage();
 
-//        service.sendMessage("I love Chloe Gan.");
-
-//        service.sendFanoutMessage("Mic test 1 2 3");
-
-        service.sendTopicMessage("Boot Topic Message Test");
     }
 
 }

@@ -3,10 +3,14 @@ package com.bjpowernode.springboot.service.impl;
 import com.bjpowernode.springboot.service.TestService;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
 public class SendServiceImpl implements TestService {
+
+    @Value("${product.key}")
+    private String productKey;
 
     @Autowired
     private AmqpTemplate amqpTemplate;
@@ -21,4 +25,17 @@ public class SendServiceImpl implements TestService {
          */
         amqpTemplate.convertAndSend("bootDirectExchange","bootDirectRoutingKey",message);
     }
+
+
+    @Override
+    public void sendFanoutMessage(String message) {
+        amqpTemplate.convertAndSend("fanoutBootExchange","",message);
+    }
+
+    @Override
+    public void sendTopicMessage(String message) {
+        System.out.println(productKey);
+        amqpTemplate.convertAndSend("topicBootExchange",productKey,message);
+    }
+
 }
